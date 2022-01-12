@@ -13,10 +13,10 @@ import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.RippleDrawable;
 import android.os.Build;
-import android.support.annotation.ColorInt;
-import android.support.annotation.NonNull;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.view.ViewCompat;
+import androidx.annotation.ColorInt;
+import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
+import androidx.core.view.ViewCompat;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.View;
@@ -823,6 +823,7 @@ public class ShadowLayout extends ViewGroup {
         public LayoutParams(Context c, AttributeSet attrs) {
             super(c, attrs);
             TypedArray a = c.obtainStyledAttributes(attrs, R.styleable.ShadowLayout_Layout);
+//            gravity = a.getInt(R.styleable.ShadowLayout_Layout_layout_gravity, UNSPECIFIED_GRAVITY);
             gravity = a.getInt(R.styleable.ShadowLayout_Layout_layout_gravity, UNSPECIFIED_GRAVITY);
             a.recycle();
         }

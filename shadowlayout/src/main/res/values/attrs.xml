@@ -22,7 +22,7 @@
     </declare-styleable>
 
     <declare-styleable name="ShadowLayout_Layout">
-        <attr name="layout_gravity" />
+        <attr name="layout_gravity" format="enum" />
     </declare-styleable>
 
 </resources>

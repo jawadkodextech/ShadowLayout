@@ -3,38 +3,41 @@ apply plugin: 'com.android.application'
 def config = rootProject.ext.android // 配置
 
 android {
-    compileSdkVersion config.compileSdkVersion
-    buildToolsVersion config.buildToolsVersion
+    compileSdkVersion 32//config.compileSdkVersion
+//    buildToolsVersion config.buildToolsVersion
 
     defaultConfig {
-        minSdkVersion config.minSdkVersion
-        targetSdkVersion config.targetSdkVersion
-        versionCode config.versionCode
-        versionName config.versionName
+        minSdkVersion 23//config.minSdkVersion
+        targetSdkVersion 32//config.targetSdkVersion
+        versionCode 1//config.versionCode
+        versionName "1.2"//config.versionName
         applicationId "com.henley.shadowlayout.sample"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
     }
 
-    signingConfigs {
-
-        henley {
-            storeFile file('./henley.jks')
-            storePassword '123456'
-            keyAlias 'henley'
-            keyPassword '123456'
-        }
-
+//    signingConfigs {
+//
+//        henley {
+//            storeFile file('./henley.jks')
+//            storePassword '123456'
+//            keyAlias 'henley'
+//            keyPassword '123456'
+//        }
+//
+//    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
     }
-
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.henley
+//            signingConfig signingConfigs.henley
         }
         debug {
             debuggable true
-            signingConfig signingConfigs.henley
+//            signingConfig signingConfigs.henley
         }
     }
 
@@ -42,16 +45,17 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "com.android.support:design:$supportVersion"
-    implementation "com.android.support:appcompat-v7:$supportVersion"
-    implementation "com.android.support:cardview-v7:$supportVersion"
-    implementation "com.android.support:recyclerview-v7:$supportVersion"
-    implementation "com.google.android:flexbox:$flexboxVersion"
-    implementation "com.android.support.constraint:constraint-layout:$constraintVersion"
-//    implementation project(':shadowlayout')
-    implementation 'com.henley.android:shadowlayout:1.0.2'
+    implementation 'com.google.android.material:material:1.4.0'
+    implementation 'androidx.appcompat:appcompat:1.4.0'
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'androidx.recyclerview:recyclerview:1.2.1'
+//    implementation "com.google.android:flexbox:$flexboxVersion"
+    implementation 'com.google.android.flexbox:flexbox:3.0.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.2'
+    implementation project(':shadowlayout')
+//    implementation 'com.henley.android:shadowlayout:1.0.2'
 
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 }
